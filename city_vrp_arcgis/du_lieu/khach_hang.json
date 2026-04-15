@@ -1,0 +1,105 @@
+{
+  "_ghi_chu": "Danh sách khách hàng. ID 0 = Kho (Depot). Tọa độ là lat/lon thực tế TP.HCM. Thời gian tính bằng phút từ 0h00.",
+  "kho_xuat_phat": {
+    "ma_khach": 0,
+    "ten": "Kho Trung Tâm",
+    "vi_do": 10.7769,
+    "kinh_do": 106.7009,
+    "thoi_gian_mo_cua": 0,
+    "thoi_gian_dong_cua": 1440,
+    "thoi_gian_boc_do": 0,
+    "nhu_cau_hang_kg": 0
+  },
+  "danh_sach_khach_hang": [
+    {
+      "ma_khach": 1,
+      "ten": "Siêu thị An Phú",
+      "vi_do": 10.8010,
+      "kinh_do": 106.7327,
+      "thoi_gian_mo_cua": 480,
+      "thoi_gian_dong_cua": 720,
+      "thoi_gian_boc_do": 20,
+      "nhu_cau_hang_kg": 500
+    },
+    {
+      "ma_khach": 2,
+      "ten": "Chợ Bình Thạnh",
+      "vi_do": 10.8136,
+      "kinh_do": 106.7100,
+      "thoi_gian_mo_cua": 360,
+      "thoi_gian_dong_cua": 600,
+      "thoi_gian_boc_do": 15,
+      "nhu_cau_hang_kg": 350
+    },
+    {
+      "ma_khach": 3,
+      "ten": "Cửa hàng Quận 1",
+      "vi_do": 10.7769,
+      "kinh_do": 106.6981,
+      "thoi_gian_mo_cua": 540,
+      "thoi_gian_dong_cua": 780,
+      "thoi_gian_boc_do": 10,
+      "nhu_cau_hang_kg": 200
+    },
+    {
+      "ma_khach": 4,
+      "ten": "Kho Thủ Đức",
+      "vi_do": 10.8500,
+      "kinh_do": 106.7510,
+      "thoi_gian_mo_cua": 420,
+      "thoi_gian_dong_cua": 660,
+      "thoi_gian_boc_do": 25,
+      "nhu_cau_hang_kg": 800
+    },
+    {
+      "ma_khach": 5,
+      "ten": "Đại lý Gò Vấp",
+      "vi_do": 10.8389,
+      "kinh_do": 106.6652,
+      "thoi_gian_mo_cua": 480,
+      "thoi_gian_dong_cua": 720,
+      "thoi_gian_boc_do": 18,
+      "nhu_cau_hang_kg": 420
+    },
+    {
+      "ma_khach": 6,
+      "ten": "Shop Tân Bình",
+      "vi_do": 10.8017,
+      "kinh_do": 106.6530,
+      "thoi_gian_mo_cua": 360,
+      "thoi_gian_dong_cua": 570,
+      "thoi_gian_boc_do": 12,
+      "nhu_cau_hang_kg": 300
+    },
+    {
+      "ma_khach": 7,
+      "ten": "Trung tâm Quận 7",
+      "vi_do": 10.7397,
+      "kinh_do": 106.7196,
+      "thoi_gian_mo_cua": 510,
+      "thoi_gian_dong_cua": 750,
+      "thoi_gian_boc_do": 20,
+      "nhu_cau_hang_kg": 450
+    },
+    {
+      "ma_khach": 8,
+      "ten": "Cửa hàng Bình Chánh",
+      "vi_do": 10.6820,
+      "kinh_do": 106.6130,
+      "thoi_gian_mo_cua": 540,
+      "thoi_gian_dong_cua": 810,
+      "thoi_gian_boc_do": 30,
+      "nhu_cau_hang_kg": 600
+    },
+    {
+      "ma_khach": 9,
+      "ten": "Chùa Hoằng Pháp",
+      "vi_do": 10.8831357,
+      "kinh_do": 106.6045338,
+      "thoi_gian_mo_cua": 480,
+      "thoi_gian_dong_cua": 1020,
+      "thoi_gian_boc_do": 30,
+      "nhu_cau_hang_kg": 600
+    }
+  ]
+}

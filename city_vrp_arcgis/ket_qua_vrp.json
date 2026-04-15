@@ -1,0 +1,37 @@
+{
+  "ham_muc_tieu": 32.173762164535205,
+  "tong_chi_phi": 46.06316184943799,
+  "tong_khi_thai": 18.284362479632428,
+  "lo_trinh": {
+    "XE_01": {
+      "loai_xe": "Diesel",
+      "thu_tu": [
+        5,
+        4,
+        1,
+        3,
+        0,
+        6,
+        7,
+        2
+      ],
+      "mo_ta": "[Kho] → Shop Tân Bình → Đại lý Gò Vấp → Chợ Bình Thạnh → Kho Thủ Đức → Siêu thị An Phú → Trung tâm Quận 7 → Cửa hàng Bình Chánh → Cửa hàng Quận 1 → [Kho]",
+      "chi_phi": 46.06316184943799,
+      "khi_thai": 18.284362479632428
+    },
+    "XE_02": {
+      "loai_xe": "Hybrid",
+      "thu_tu": [],
+      "mo_ta": "[Kho] → [Kho]",
+      "chi_phi": 0.0,
+      "khi_thai": 0.0
+    },
+    "XE_03": {
+      "loai_xe": "Diesel",
+      "thu_tu": [],
+      "mo_ta": "[Kho] → [Kho]",
+      "chi_phi": 0.0,
+      "khi_thai": 0.0
+    }
+  }
+}

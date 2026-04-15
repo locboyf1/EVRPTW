@@ -1,0 +1,17 @@
+{
+  "_ghi_chu": "Bảng MOVES (Motor Vehicle Emission Simulator) — mapping tốc độ giới hạn → hệ số xả thải CO2 (g/km)",
+  "bang_moves": {
+    "20":  0.312,
+    "30":  0.285,
+    "40":  0.261,
+    "50":  0.248,
+    "60":  0.239,
+    "70":  0.244,
+    "80":  0.258,
+    "90":  0.275,
+    "100": 0.298,
+    "110": 0.324,
+    "120": 0.356
+  },
+  "he_so_mac_dinh_khi_khong_co_du_lieu": 0.261
+}

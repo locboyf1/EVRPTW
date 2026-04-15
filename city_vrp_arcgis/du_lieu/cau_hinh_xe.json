@@ -1,0 +1,30 @@
+{
+  "_ghi_chu": "Cấu hình đội xe. Hệ số khí thải nhân VÀO MA TRẬN sau Dijkstra, KHÔNG nhân trong vòng lặp dò đường. Lương tài xế là biến ĐỘC LẬP theo thời gian.",
+  "luong_tai_xe_usd_per_gio": 26.55,
+  "danh_sach_xe": [
+    {
+      "ma_xe": "XE_01",
+      "loai_xe": "Diesel",
+      "tai_trong_kg": 5000,
+      "chi_phi_hao_mon_usd_per_km": 0.15,
+      "he_so_khi_thai": 1.0,
+      "_ghi_chu_he_so": "Xe Diesel = baseline 1.0, không điều chỉnh"
+    },
+    {
+      "ma_xe": "XE_02",
+      "loai_xe": "Hybrid",
+      "tai_trong_kg": 4500,
+      "chi_phi_hao_mon_usd_per_km": 0.18,
+      "he_so_khi_thai": 0.6,
+      "_ghi_chu_he_so": "Xe Hybrid phát thải ít hơn 40% so với Diesel"
+    },
+    {
+      "ma_xe": "XE_03",
+      "loai_xe": "Diesel",
+      "tai_trong_kg": 5000,
+      "chi_phi_hao_mon_usd_per_km": 0.15,
+      "he_so_khi_thai": 1.0,
+      "_ghi_chu_he_so": "Xe Diesel thứ hai"
+    }
+  ]
+}
