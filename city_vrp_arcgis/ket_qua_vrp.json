@@ -1,37 +1,92 @@
 {
-  "ham_muc_tieu": 32.173762164535205,
-  "tong_chi_phi": 46.06316184943799,
-  "tong_khi_thai": 18.284362479632428,
+  "ham_muc_tieu": 56.41441983751528,
+  "tong_chi_phi": 80.24969391984482,
+  "tong_khi_thai": 32.579145755185756,
   "lo_trinh": {
-    "XE_01": {
-      "loai_xe": "Diesel",
+    "Xe_03": {
+      "mo_ta": "[Kho] -> Khách hàng 21 -> Khách hàng 41 -> Khách hàng 49 -> Khách hàng 07 -> Khách hàng 01 -> Khách hàng 50 -> Khách hàng 04 -> Khách hàng 18 -> Khách hàng 06 -> Khách hàng 11 -> [Kho]",
       "thu_tu": [
-        5,
-        4,
-        1,
-        3,
-        0,
+        20,
+        40,
+        48,
         6,
+        0,
+        49,
+        3,
+        17,
+        5,
+        10
+      ]
+    },
+    "Xe_06": {
+      "mo_ta": "[Kho] -> Khách hàng 08 -> Khách hàng 05 -> Khách hàng 45 -> Khách hàng 16 -> Khách hàng 27 -> [Kho]",
+      "thu_tu": [
         7,
-        2
-      ],
-      "mo_ta": "[Kho] → Shop Tân Bình → Đại lý Gò Vấp → Chợ Bình Thạnh → Kho Thủ Đức → Siêu thị An Phú → Trung tâm Quận 7 → Cửa hàng Bình Chánh → Cửa hàng Quận 1 → [Kho]",
-      "chi_phi": 46.06316184943799,
-      "khi_thai": 18.284362479632428
+        4,
+        44,
+        15,
+        26
+      ]
     },
-    "XE_02": {
-      "loai_xe": "Hybrid",
-      "thu_tu": [],
-      "mo_ta": "[Kho] → [Kho]",
-      "chi_phi": 0.0,
-      "khi_thai": 0.0
+    "Xe_07": {
+      "mo_ta": "[Kho] -> Khách hàng 22 -> Khách hàng 29 -> [Kho]",
+      "thu_tu": [
+        21,
+        28
+      ]
     },
-    "XE_03": {
-      "loai_xe": "Diesel",
-      "thu_tu": [],
-      "mo_ta": "[Kho] → [Kho]",
-      "chi_phi": 0.0,
-      "khi_thai": 0.0
+    "Xe_11": {
+      "mo_ta": "[Kho] -> Khách hàng 12 -> Khách hàng 37 -> Khách hàng 38 -> Khách hàng 17 -> Khách hàng 20 -> Khách hàng 26 -> Khách hàng 39 -> Khách hàng 19 -> Khách hàng 34 -> [Kho]",
+      "thu_tu": [
+        11,
+        36,
+        37,
+        16,
+        19,
+        25,
+        38,
+        18,
+        33
+      ]
+    },
+    "Xe_12": {
+      "mo_ta": "[Kho] -> Khách hàng 32 -> Khách hàng 15 -> Khách hàng 03 -> Khách hàng 24 -> Khách hàng 46 -> Khách hàng 43 -> Khách hàng 44 -> Khách hàng 10 -> [Kho]",
+      "thu_tu": [
+        31,
+        14,
+        2,
+        23,
+        45,
+        42,
+        43,
+        9
+      ]
+    },
+    "Xe_15": {
+      "mo_ta": "[Kho] -> Khách hàng 36 -> Khách hàng 14 -> Khách hàng 35 -> Khách hàng 02 -> Khách hàng 09 -> Khách hàng 42 -> Khách hàng 30 -> Khách hàng 13 -> Khách hàng 47 -> [Kho]",
+      "thu_tu": [
+        35,
+        13,
+        34,
+        1,
+        8,
+        41,
+        29,
+        12,
+        46
+      ]
+    },
+    "Xe_16": {
+      "mo_ta": "[Kho] -> Khách hàng 23 -> Khách hàng 33 -> Khách hàng 40 -> Khách hàng 28 -> Khách hàng 48 -> Khách hàng 25 -> Khách hàng 31 -> [Kho]",
+      "thu_tu": [
+        22,
+        32,
+        39,
+        27,
+        47,
+        24,
+        30
+      ]
     }
   }
 }

@@ -18,6 +18,8 @@ LUỒNG DỮ LIỆU:
 import sys
 import os
 import json
+import csv
+from datetime import datetime
 
 # ── Thêm thư mục gốc vào sys.path để import các module ──
 _THU_MUC_GOC = os.path.dirname(os.path.abspath(__file__))
@@ -46,9 +48,11 @@ from giao_dien.terminal_ui import (
 # Đường dẫn tuyệt đối: luôn tính từ vị trí của main.py, không phụ thuộc CWD
 CAU_HINH_CHAY = {
     "thu_muc_du_lieu":   os.path.join(_THU_MUC_GOC, "du_lieu"),
-    "ten_thanh_pho_osm": "Ho Chi Minh City, Vietnam",
-    "ban_kinh_ban_do_m": 8000,      # Bán kính tải bản đồ (mét)
-    "ma_xe_giai":        "XE_01",   # Xe được chọn để tính hệ số khí thải
+    "ten_thanh_pho_osm": "Vinh City, Vietnam",
+    "ban_kinh_ban_do_m": 8000,      # Bán kinh tải bản đồ (mét)
+    "ma_xe_giai":        "XE_03",   # Xe mẫu được chọn để tính hệ số khí thải
+    "so_xe_mo_phong":    17,        # Số lượng xe đồng nhất (theo Wygonik & Goodchild)
+    "tai_trong_toi_da":  90,        # Đơn vị hàng tối đa trên 1 xe
     "tham_so_tabu": {
         "toi_da_vong_lap": 300,
         "do_dai_tabu":     12,
@@ -143,11 +147,11 @@ def chay_he_thong():
     tham_so = CAU_HINH_CHAY["tham_so_tabu"]
 
     bo_giai = TabuSearchVRPSolver(
-        so_xe=len(danh_sach_xe),
+        so_xe=CAU_HINH_CHAY["so_xe_mo_phong"],
+        tai_trong_toi_da=CAU_HINH_CHAY["tai_trong_toi_da"],
         danh_sach_khach_hang=danh_sach_kh,
-        cau_hinh_xe=danh_sach_xe,
         ma_tran_chi_phi=ma_tran_chi_phi,
-        ma_tran_khi_thai=ma_tran_khi_thai_xe,      # ← Ma trận đã nhân hệ số xe
+        ma_tran_khi_thai=ma_tran_khi_thai_xe,
         ma_tran_thoi_gian_giay=ma_tran_thoi_gian_giay,
         toi_da_vong_lap=tham_so["toi_da_vong_lap"],
         do_dai_tabu=tham_so["do_dai_tabu"],
@@ -189,6 +193,29 @@ def chay_he_thong():
         with open(file_ket_qua, "w", encoding="utf-8") as f:
             json.dump(ket_qua_luu, f, ensure_ascii=False, indent=2)
         in_ket_qua(f"\n✔ Kết quả đã lưu: {file_ket_qua}")
+
+    # ══════════════════════════════════════════════════════════
+    # BƯỚC 5: LƯU LỊCH SỬ CHẠY (CSV)
+    # ══════════════════════════════════════════════════════════
+    file_csv = os.path.join(CAU_HINH_CHAY["thu_muc_du_lieu"], "lich_su_chay.csv")
+    file_exists = os.path.isfile(file_csv)
+
+    with open(file_csv, mode='a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            # Ghi tiêu đề nếu file mới
+            writer.writerow(["Thoi_Gian", "Thanh_Pho", "So_Khach", "Alpha", "Beta", "Chi_Phi", "Khi_Thai"])
+
+        writer.writerow([
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            CAU_HINH_CHAY["ten_thanh_pho_osm"],
+            len(danh_sach_kh),
+            tham_so["trong_so_chi_phi"],
+            tham_so["trong_so_khi_thai"],
+            round(ket_qua["tong_chi_phi"], 2),
+            round(ket_qua["tong_khi_thai"], 2)
+        ])
+    in_thong_bao(f"✔ Đã cập nhật nhật ký chạy vào: {file_csv}")
 
     in_tieu_de("HỆ THỐNG HOÀN THÀNH")
 

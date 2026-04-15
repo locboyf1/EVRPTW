@@ -1,105 +1,462 @@
 {
-  "_ghi_chu": "Danh sách khách hàng. ID 0 = Kho (Depot). Tọa độ là lat/lon thực tế TP.HCM. Thời gian tính bằng phút từ 0h00.",
   "kho_xuat_phat": {
-    "ma_khach": 0,
-    "ten": "Kho Trung Tâm",
-    "vi_do": 10.7769,
-    "kinh_do": 106.7009,
+    "ten": "Kho trung tam Vinh City",
+    "vi_do": 10.254809,
+    "kinh_do": 105.9714673,
     "thoi_gian_mo_cua": 0,
     "thoi_gian_dong_cua": 1440,
-    "thoi_gian_boc_do": 0,
-    "nhu_cau_hang_kg": 0
+    "thoi_gian_boc_do": 0
   },
   "danh_sach_khach_hang": [
     {
-      "ma_khach": 1,
-      "ten": "Siêu thị An Phú",
-      "vi_do": 10.8010,
-      "kinh_do": 106.7327,
-      "thoi_gian_mo_cua": 480,
-      "thoi_gian_dong_cua": 720,
-      "thoi_gian_boc_do": 20,
-      "nhu_cau_hang_kg": 500
+      "ten": "Khách hàng 01",
+      "vi_do": 10.269477836251582,
+      "kinh_do": 105.93572327981207,
+      "nhu_cau": 8,
+      "thoi_gian_mo_cua": 494,
+      "thoi_gian_dong_cua": 1188,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 2,
-      "ten": "Chợ Bình Thạnh",
-      "vi_do": 10.8136,
-      "kinh_do": 106.7100,
-      "thoi_gian_mo_cua": 360,
-      "thoi_gian_dong_cua": 600,
-      "thoi_gian_boc_do": 15,
-      "nhu_cau_hang_kg": 350
+      "ten": "Khách hàng 02",
+      "vi_do": 10.282945760791863,
+      "kinh_do": 105.999588533009,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 539,
+      "thoi_gian_dong_cua": 1154,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 3,
-      "ten": "Cửa hàng Quận 1",
-      "vi_do": 10.7769,
-      "kinh_do": 106.6981,
+      "ten": "Khách hàng 03",
+      "vi_do": 10.22436117267603,
+      "kinh_do": 105.95346463647802,
+      "nhu_cau": 6,
+      "thoi_gian_mo_cua": 496,
+      "thoi_gian_dong_cua": 1138,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 04",
+      "vi_do": 10.256258825933648,
+      "kinh_do": 105.94317110082264,
+      "nhu_cau": 6,
+      "thoi_gian_mo_cua": 520,
+      "thoi_gian_dong_cua": 1027,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 05",
+      "vi_do": 10.281041571739726,
+      "kinh_do": 105.98150345214162,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 574,
+      "thoi_gian_dong_cua": 1173,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 06",
+      "vi_do": 10.257763231681329,
+      "kinh_do": 105.93898352049864,
+      "nhu_cau": 14,
+      "thoi_gian_mo_cua": 597,
+      "thoi_gian_dong_cua": 1187,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 07",
+      "vi_do": 10.28478300978449,
+      "kinh_do": 105.95473005609205,
+      "nhu_cau": 4,
+      "thoi_gian_mo_cua": 490,
+      "thoi_gian_dong_cua": 1188,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 08",
+      "vi_do": 10.266178056858456,
+      "kinh_do": 105.97928681598229,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 492,
+      "thoi_gian_dong_cua": 1098,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 09",
+      "vi_do": 10.277684108484856,
+      "kinh_do": 106.00300012918991,
+      "nhu_cau": 2,
+      "thoi_gian_mo_cua": 536,
+      "thoi_gian_dong_cua": 1197,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 10",
+      "vi_do": 10.237600849145677,
+      "kinh_do": 105.968298497035,
+      "nhu_cau": 1,
+      "thoi_gian_mo_cua": 515,
+      "thoi_gian_dong_cua": 1192,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 11",
+      "vi_do": 10.246636648819388,
+      "kinh_do": 105.95064194523584,
+      "nhu_cau": 2,
+      "thoi_gian_mo_cua": 504,
+      "thoi_gian_dong_cua": 1007,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 12",
+      "vi_do": 10.27057184677359,
+      "kinh_do": 105.96347846218278,
+      "nhu_cau": 3,
+      "thoi_gian_mo_cua": 485,
+      "thoi_gian_dong_cua": 1091,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 13",
+      "vi_do": 10.289233587363812,
+      "kinh_do": 105.99901704083305,
+      "nhu_cau": 2,
+      "thoi_gian_mo_cua": 509,
+      "thoi_gian_dong_cua": 1127,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 14",
+      "vi_do": 10.234649666256045,
+      "kinh_do": 105.98368905278787,
+      "nhu_cau": 15,
+      "thoi_gian_mo_cua": 504,
+      "thoi_gian_dong_cua": 1025,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 15",
+      "vi_do": 10.22092061458327,
+      "kinh_do": 105.97453701313441,
+      "nhu_cau": 5,
+      "thoi_gian_mo_cua": 583,
+      "thoi_gian_dong_cua": 1015,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 16",
+      "vi_do": 10.276644543851463,
+      "kinh_do": 105.98757716090189,
+      "nhu_cau": 11,
+      "thoi_gian_mo_cua": 596,
+      "thoi_gian_dong_cua": 1082,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 17",
+      "vi_do": 10.250783400226455,
+      "kinh_do": 105.93201550217385,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 578,
+      "thoi_gian_dong_cua": 1175,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 18",
+      "vi_do": 10.250703283662332,
+      "kinh_do": 105.93871878799622,
+      "nhu_cau": 11,
+      "thoi_gian_mo_cua": 570,
+      "thoi_gian_dong_cua": 1016,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 19",
+      "vi_do": 10.259066186357929,
+      "kinh_do": 105.95376188210835,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 505,
+      "thoi_gian_dong_cua": 1131,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 20",
+      "vi_do": 10.249199176053528,
+      "kinh_do": 105.93276238620616,
+      "nhu_cau": 10,
+      "thoi_gian_mo_cua": 552,
+      "thoi_gian_dong_cua": 1105,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 21",
+      "vi_do": 10.268482106492414,
+      "kinh_do": 105.99286972397957,
+      "nhu_cau": 11,
+      "thoi_gian_mo_cua": 503,
+      "thoi_gian_dong_cua": 1128,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 22",
+      "vi_do": 10.28103993781121,
+      "kinh_do": 105.96244547725213,
+      "nhu_cau": 14,
+      "thoi_gian_mo_cua": 583,
+      "thoi_gian_dong_cua": 1171,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 23",
+      "vi_do": 10.243502708519541,
+      "kinh_do": 105.98076410139818,
+      "nhu_cau": 2,
+      "thoi_gian_mo_cua": 532,
+      "thoi_gian_dong_cua": 1123,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 24",
+      "vi_do": 10.215139383279855,
+      "kinh_do": 105.9676906860426,
+      "nhu_cau": 3,
+      "thoi_gian_mo_cua": 555,
+      "thoi_gian_dong_cua": 1027,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 25",
+      "vi_do": 10.219624360818154,
+      "kinh_do": 105.99440319629032,
+      "nhu_cau": 1,
+      "thoi_gian_mo_cua": 542,
+      "thoi_gian_dong_cua": 1040,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 26",
+      "vi_do": 10.286967336653127,
+      "kinh_do": 105.96623662995748,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 542,
+      "thoi_gian_dong_cua": 1181,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 27",
+      "vi_do": 10.281999346280099,
+      "kinh_do": 105.9814110565238,
+      "nhu_cau": 15,
+      "thoi_gian_mo_cua": 507,
+      "thoi_gian_dong_cua": 1113,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 28",
+      "vi_do": 10.21802804278297,
+      "kinh_do": 105.98394387866324,
+      "nhu_cau": 15,
+      "thoi_gian_mo_cua": 538,
+      "thoi_gian_dong_cua": 1145,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 29",
+      "vi_do": 10.259721533034964,
+      "kinh_do": 105.95446304943177,
+      "nhu_cau": 3,
+      "thoi_gian_mo_cua": 514,
+      "thoi_gian_dong_cua": 1028,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 30",
+      "vi_do": 10.275400819312962,
+      "kinh_do": 105.99819331454853,
+      "nhu_cau": 9,
+      "thoi_gian_mo_cua": 567,
+      "thoi_gian_dong_cua": 1078,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 31",
+      "vi_do": 10.243913839572606,
+      "kinh_do": 105.98262377422577,
+      "nhu_cau": 15,
       "thoi_gian_mo_cua": 540,
-      "thoi_gian_dong_cua": 780,
-      "thoi_gian_boc_do": 10,
-      "nhu_cau_hang_kg": 200
+      "thoi_gian_dong_cua": 1039,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 4,
-      "ten": "Kho Thủ Đức",
-      "vi_do": 10.8500,
-      "kinh_do": 106.7510,
-      "thoi_gian_mo_cua": 420,
-      "thoi_gian_dong_cua": 660,
-      "thoi_gian_boc_do": 25,
-      "nhu_cau_hang_kg": 800
+      "ten": "Khách hàng 32",
+      "vi_do": 10.233117250246687,
+      "kinh_do": 105.96139462612281,
+      "nhu_cau": 10,
+      "thoi_gian_mo_cua": 490,
+      "thoi_gian_dong_cua": 1059,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 5,
-      "ten": "Đại lý Gò Vấp",
-      "vi_do": 10.8389,
-      "kinh_do": 106.6652,
-      "thoi_gian_mo_cua": 480,
-      "thoi_gian_dong_cua": 720,
-      "thoi_gian_boc_do": 18,
-      "nhu_cau_hang_kg": 420
+      "ten": "Khách hàng 33",
+      "vi_do": 10.230322691017383,
+      "kinh_do": 105.99448553463898,
+      "nhu_cau": 3,
+      "thoi_gian_mo_cua": 527,
+      "thoi_gian_dong_cua": 1074,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 6,
-      "ten": "Shop Tân Bình",
-      "vi_do": 10.8017,
-      "kinh_do": 106.6530,
-      "thoi_gian_mo_cua": 360,
-      "thoi_gian_dong_cua": 570,
-      "thoi_gian_boc_do": 12,
-      "nhu_cau_hang_kg": 300
+      "ten": "Khách hàng 34",
+      "vi_do": 10.261825830315702,
+      "kinh_do": 105.96996284122753,
+      "nhu_cau": 11,
+      "thoi_gian_mo_cua": 492,
+      "thoi_gian_dong_cua": 1057,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 7,
-      "ten": "Trung tâm Quận 7",
-      "vi_do": 10.7397,
-      "kinh_do": 106.7196,
-      "thoi_gian_mo_cua": 510,
-      "thoi_gian_dong_cua": 750,
-      "thoi_gian_boc_do": 20,
-      "nhu_cau_hang_kg": 450
+      "ten": "Khách hàng 35",
+      "vi_do": 10.228376382681377,
+      "kinh_do": 105.99896125804337,
+      "nhu_cau": 11,
+      "thoi_gian_mo_cua": 567,
+      "thoi_gian_dong_cua": 1095,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 8,
-      "ten": "Cửa hàng Bình Chánh",
-      "vi_do": 10.6820,
-      "kinh_do": 106.6130,
-      "thoi_gian_mo_cua": 540,
-      "thoi_gian_dong_cua": 810,
-      "thoi_gian_boc_do": 30,
-      "nhu_cau_hang_kg": 600
+      "ten": "Khách hàng 36",
+      "vi_do": 10.242195360861976,
+      "kinh_do": 105.97714954401621,
+      "nhu_cau": 13,
+      "thoi_gian_mo_cua": 521,
+      "thoi_gian_dong_cua": 1066,
+      "thoi_gian_boc_do": 15
     },
     {
-      "ma_khach": 9,
-      "ten": "Chùa Hoằng Pháp",
-      "vi_do": 10.8831357,
-      "kinh_do": 106.6045338,
-      "thoi_gian_mo_cua": 480,
-      "thoi_gian_dong_cua": 1020,
-      "thoi_gian_boc_do": 30,
-      "nhu_cau_hang_kg": 600
+      "ten": "Khách hàng 37",
+      "vi_do": 10.264378750800814,
+      "kinh_do": 105.94360831936937,
+      "nhu_cau": 12,
+      "thoi_gian_mo_cua": 486,
+      "thoi_gian_dong_cua": 1160,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 38",
+      "vi_do": 10.25695289398474,
+      "kinh_do": 105.93891047348457,
+      "nhu_cau": 12,
+      "thoi_gian_mo_cua": 499,
+      "thoi_gian_dong_cua": 1028,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 39",
+      "vi_do": 10.292121105937547,
+      "kinh_do": 105.93215181514516,
+      "nhu_cau": 2,
+      "thoi_gian_mo_cua": 546,
+      "thoi_gian_dong_cua": 1102,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 40",
+      "vi_do": 10.229738224886177,
+      "kinh_do": 105.99495677760939,
+      "nhu_cau": 13,
+      "thoi_gian_mo_cua": 561,
+      "thoi_gian_dong_cua": 1069,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 41",
+      "vi_do": 10.254335127135407,
+      "kinh_do": 105.99691739630796,
+      "nhu_cau": 12,
+      "thoi_gian_mo_cua": 499,
+      "thoi_gian_dong_cua": 1185,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 42",
+      "vi_do": 10.25769814243155,
+      "kinh_do": 106.01104830884424,
+      "nhu_cau": 5,
+      "thoi_gian_mo_cua": 520,
+      "thoi_gian_dong_cua": 1059,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 43",
+      "vi_do": 10.236942278354636,
+      "kinh_do": 105.95715416325088,
+      "nhu_cau": 1,
+      "thoi_gian_mo_cua": 586,
+      "thoi_gian_dong_cua": 1032,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 44",
+      "vi_do": 10.234166543774041,
+      "kinh_do": 105.96516259441024,
+      "nhu_cau": 5,
+      "thoi_gian_mo_cua": 597,
+      "thoi_gian_dong_cua": 1163,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 45",
+      "vi_do": 10.290764650351843,
+      "kinh_do": 105.9822143090224,
+      "nhu_cau": 13,
+      "thoi_gian_mo_cua": 481,
+      "thoi_gian_dong_cua": 1117,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 46",
+      "vi_do": 10.218692452447527,
+      "kinh_do": 105.96123865433454,
+      "nhu_cau": 6,
+      "thoi_gian_mo_cua": 580,
+      "thoi_gian_dong_cua": 1148,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 47",
+      "vi_do": 10.289276791720336,
+      "kinh_do": 106.0076962156352,
+      "nhu_cau": 14,
+      "thoi_gian_mo_cua": 502,
+      "thoi_gian_dong_cua": 1184,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 48",
+      "vi_do": 10.215787476655676,
+      "kinh_do": 105.98882033408948,
+      "nhu_cau": 11,
+      "thoi_gian_mo_cua": 563,
+      "thoi_gian_dong_cua": 1024,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 49",
+      "vi_do": 10.278256268359392,
+      "kinh_do": 105.93663846715101,
+      "nhu_cau": 12,
+      "thoi_gian_mo_cua": 582,
+      "thoi_gian_dong_cua": 1024,
+      "thoi_gian_boc_do": 15
+    },
+    {
+      "ten": "Khách hàng 50",
+      "vi_do": 10.285347963617394,
+      "kinh_do": 105.94880380199785,
+      "nhu_cau": 6,
+      "thoi_gian_mo_cua": 512,
+      "thoi_gian_dong_cua": 1092,
+      "thoi_gian_boc_do": 15
     }
   ]
 }
