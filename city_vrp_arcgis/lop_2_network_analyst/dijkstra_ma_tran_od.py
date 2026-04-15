@@ -85,9 +85,9 @@ def _tao_do_thi_du_phong(tat_ca_diem: list) -> nx.DiGraph:
 # ─────────────────────────────────────────────────────────────
 # HÀM: TẢI ĐỒ THỊ ĐƯỜNG PHỐ (OSMnx)
 # ─────────────────────────────────────────────────────────────
-def tai_do_thi_duong_pho(ten_thanh_pho: str = "Vinh city, Vietnam",
-                          ban_kinh_met: int = 8000,
-                          tat_ca_diem: list = None) -> object:
+def tai_ban_do_osm(ten_thanh_pho: str = "Vinh city, Vietnam",
+                  ban_kinh_met: int = 8000,
+                  tat_ca_diem: list = None) -> object:
     """
     Tải đồ thị đường phố từ OpenStreetMap qua OSMnx.
     Nếu osmnx không cài hoặc kết nối thất bại, dùng đồ thị Euclidean dự phòng.
@@ -312,11 +312,16 @@ def tao_ma_tran_od_bang_dijkstra(
 
     # Xuống dòng sau thanh tiến trình
     print()
-    in_thong_bao("✔ Dijkstra hoàn thành. 4 Ma trận OD gốc đã sẵn sàng.")
-    in_thong_bao(
-        f"   Chi phí min={ma_tran_chi_phi[ma_tran_chi_phi > 0].min():.2f}$ "
-        f"| max={ma_tran_chi_phi[ma_tran_chi_phi < 1e8].max():.2f}$"
-    )
+    in_thong_bao("OK - Dijkstra hoan thanh. 4 Ma tran OD goc da san sang.")
+    
+    # Kiểm tra xem có giá trị nào hợp lệ (lớn hơn 0 và nhỏ hơn vô cùng) không
+    hop_le = ma_tran_chi_phi[(ma_tran_chi_phi > 0) & (ma_tran_chi_phi < 1e8)]
+    if hop_le.size > 0:
+        in_thong_bao(
+            f"   Chi phi: min={hop_le.min():.2f}$ | max={hop_le.max():.2f}$"
+        )
+    else:
+        in_canh_bao("   [!] Canh bao: Ma tran chi phi khong co du lieu hop le (co the do loi snap diem).")
 
     # ═══════════════════════════════════════════════════════════
     # DIJKSTRA KẾT THÚC — Trả về ma trận gốc (chưa nhân hệ số xe)

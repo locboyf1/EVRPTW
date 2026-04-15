@@ -111,3 +111,49 @@ def _xac_thuc_du_lieu(tat_ca_diem: list, danh_sach_xe: list):
                 f"[LỖI] Xe '{xe['ma_xe']}': he_so_khi_thai phải > 0"
             )
     in_thong_bao("✔ Xác thực dữ liệu: Hợp lệ")
+
+
+# ─────────────────────────────────────────────────────────────
+# HÀM: LƯU LỊCH SỬ CHẠY (LOGGING)
+# ─────────────────────────────────────────────────────────────
+def luu_lich_su_chay(file_csv: str, data: dict):
+    """
+    Lưu kết quả mô phỏng vào file CSV lịch sử.
+    data = {
+        'Thanh_Pho': str,
+        'So_Khach': int,
+        'Alpha': float,
+        'Beta': float,
+        'Chi_Phi': float,
+        'Khi_Thai': float,
+        'Kich_Ban': str
+    }
+    """
+    import csv
+    from datetime import datetime
+
+    file_exists = os.path.isfile(file_csv)
+    header = ["Thoi_Gian", "Thanh_Pho", "So_Khach", "Alpha", "Beta", "Chi_Phi", "Khi_Thai", "Kich_Ban"]
+
+    try:
+        with open(file_csv, mode='a', newline='', encoding='utf-8') as f:
+            writer = csv.writer(f)
+            # Nếu file mới, ghi header trước
+            if not file_exists:
+                writer.writerow(header)
+            
+            # Chuẩn bị dòng dữ liệu
+            row = [
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                data.get("Thanh_Pho", "Unknown"),
+                data.get("So_Khach", 0),
+                data.get("Alpha", 0.5),
+                data.get("Beta", 0.5),
+                round(data.get("Chi_Phi", 0), 2),
+                round(data.get("Khi_Thai", 0), 2),
+                data.get("Kich_Ban", "Base Case")
+            ]
+            writer.writerow(row)
+        in_thong_bao(f"✔ Đã ghi lịch sử chạy vào: {os.path.basename(file_csv)}")
+    except Exception as e:
+        in_canh_bao(f"⚠ Không thể ghi lịch sử chạy: {e}")
