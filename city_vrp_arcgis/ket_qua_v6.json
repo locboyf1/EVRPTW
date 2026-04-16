@@ -1,81 +1,81 @@
 {
-    "ham_muc_tieu": 200.36478514620313,
-    "tong_chi_phi": 358.94058143260816,
-    "tong_khi_thai": 41.788988859798124,
+    "ham_muc_tieu": 255.31698081616557,
+    "tong_chi_phi": 469.10533646868555,
+    "tong_khi_thai": 41.528625163645586,
     "lo_trinh": {
-        "Xe_03": {
-            "mo_ta": "[Kho] -> Khach hang 03 -> Khach hang 31 -> Khach hang 05 -> [Kho]",
+        "Xe_08": {
+            "mo_ta": "[Kho] -> Khach hang 03 -> Khach hang 22 -> Khach hang 17 -> Khach hang 01 -> Khach hang 30 -> Khach hang 07 -> Khach hang 25 -> Khach hang 04 -> Khach hang 02 -> Khach hang 44 -> Khach hang 24 -> [Kho]",
             "thu_tu": [
                 2,
-                30,
-                4
-            ]
-        },
-        "Xe_09": {
-            "mo_ta": "[Kho] -> Khach hang 01 -> Khach hang 17 -> Khach hang 13 -> Khach hang 33 -> Khach hang 18 -> Khach hang 06 -> Khach hang 27 -> Khach hang 15 -> [Kho]",
-            "thu_tu": [
-                0,
-                16,
-                12,
-                32,
-                17,
-                5,
-                26,
-                14
-            ]
-        },
-        "Xe_13": {
-            "mo_ta": "[Kho] -> Khach hang 22 -> Khach hang 08 -> Khach hang 48 -> Khach hang 23 -> Khach hang 29 -> Khach hang 40 -> Khach hang 46 -> Khach hang 42 -> Khach hang 11 -> Khach hang 36 -> Khach hang 35 -> [Kho]",
-            "thu_tu": [
                 21,
-                7,
-                47,
-                22,
-                28,
-                39,
-                45,
-                41,
-                10,
-                35,
-                34
-            ]
-        },
-        "Xe_15": {
-            "mo_ta": "[Kho] -> Khach hang 19 -> Khach hang 39 -> Khach hang 50 -> Khach hang 14 -> Khach hang 25 -> Khach hang 49 -> Khach hang 04 -> Khach hang 02 -> Khach hang 16 -> Khach hang 44 -> Khach hang 47 -> Khach hang 24 -> [Kho]",
-            "thu_tu": [
-                18,
-                38,
-                49,
-                13,
+                16,
+                0,
+                29,
+                6,
                 24,
-                48,
                 3,
                 1,
-                15,
                 43,
-                46,
                 23
             ]
         },
-        "Xe_16": {
-            "mo_ta": "[Kho] -> Khach hang 41 -> Khach hang 09 -> Khach hang 12 -> Khach hang 21 -> Khach hang 45 -> Khach hang 30 -> Khach hang 10 -> Khach hang 07 -> Khach hang 34 -> Khach hang 26 -> Khach hang 32 -> Khach hang 20 -> Khach hang 38 -> Khach hang 28 -> Khach hang 37 -> Khach hang 43 -> [Kho]",
+        "Xe_10": {
+            "mo_ta": "[Kho] -> Khach hang 05 -> Khach hang 12 -> Khach hang 21 -> Khach hang 19 -> Khach hang 06 -> Khach hang 14 -> Khach hang 50 -> Khach hang 49 -> Khach hang 32 -> Khach hang 35 -> Khach hang 38 -> Khach hang 47 -> [Kho]",
             "thu_tu": [
-                40,
-                8,
+                4,
                 11,
                 20,
-                44,
-                29,
-                9,
-                6,
-                33,
-                25,
+                18,
+                5,
+                13,
+                49,
+                48,
                 31,
-                19,
+                34,
                 37,
+                46
+            ]
+        },
+        "Xe_14": {
+            "mo_ta": "[Kho] -> Khach hang 09 -> Khach hang 33 -> Khach hang 18 -> Khach hang 39 -> Khach hang 40 -> Khach hang 27 -> Khach hang 46 -> Khach hang 26 -> Khach hang 42 -> Khach hang 36 -> [Kho]",
+            "thu_tu": [
+                8,
+                32,
+                17,
+                38,
+                39,
+                26,
+                45,
+                25,
+                41,
+                35
+            ]
+        },
+        "Xe_15": {
+            "mo_ta": "[Kho] -> Khach hang 13 -> Khach hang 45 -> Khach hang 10 -> Khach hang 20 -> Khach hang 16 -> Khach hang 28 -> Khach hang 43 -> Khach hang 37 -> [Kho]",
+            "thu_tu": [
+                12,
+                44,
+                9,
+                19,
+                15,
                 27,
-                36,
-                42
+                42,
+                36
+            ]
+        },
+        "Xe_16": {
+            "mo_ta": "[Kho] -> Khach hang 41 -> Khach hang 31 -> Khach hang 08 -> Khach hang 23 -> Khach hang 48 -> Khach hang 29 -> Khach hang 15 -> Khach hang 34 -> Khach hang 11 -> [Kho]",
+            "thu_tu": [
+                40,
+                30,
+                7,
+                22,
+                47,
+                28,
+                14,
+                33,
+                10
             ]
         }
     }
