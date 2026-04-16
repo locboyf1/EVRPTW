@@ -1,81 +1,81 @@
 {
-    "ham_muc_tieu": 221.9697140139259,
-    "tong_chi_phi": 413.67881299322715,
-    "tong_khi_thai": 30.26061503462464,
+    "ham_muc_tieu": 200.36478514620313,
+    "tong_chi_phi": 358.94058143260816,
+    "tong_khi_thai": 41.788988859798124,
     "lo_trinh": {
-        "Xe_04": {
-            "mo_ta": "[Kho] -> Khach hang 01 -> Khach hang 23 -> Khach hang 05 -> Khach hang 19 -> Khach hang 15 -> Khach hang 50 -> Khach hang 07 -> [Kho]",
+        "Xe_03": {
+            "mo_ta": "[Kho] -> Khach hang 03 -> Khach hang 31 -> Khach hang 05 -> [Kho]",
             "thu_tu": [
-                0,
-                22,
-                4,
-                18,
-                14,
-                49,
-                6
+                2,
+                30,
+                4
             ]
         },
-        "Xe_10": {
-            "mo_ta": "[Kho] -> Khach hang 08 -> Khach hang 13 -> Khach hang 33 -> Khach hang 18 -> Khach hang 06 -> Khach hang 39 -> Khach hang 40 -> Khach hang 20 -> Khach hang 35 -> Khach hang 11 -> Khach hang 24 -> Khach hang 47 -> [Kho]",
+        "Xe_09": {
+            "mo_ta": "[Kho] -> Khach hang 01 -> Khach hang 17 -> Khach hang 13 -> Khach hang 33 -> Khach hang 18 -> Khach hang 06 -> Khach hang 27 -> Khach hang 15 -> [Kho]",
             "thu_tu": [
-                7,
+                0,
+                16,
                 12,
                 32,
                 17,
                 5,
-                38,
-                39,
-                19,
-                34,
-                10,
-                23,
-                46
+                26,
+                14
             ]
         },
-        "Xe_14": {
-            "mo_ta": "[Kho] -> Khach hang 03 -> Khach hang 22 -> Khach hang 17 -> Khach hang 41 -> Khach hang 10 -> Khach hang 30 -> Khach hang 42 -> Khach hang 26 -> Khach hang 02 -> Khach hang 36 -> Khach hang 44 -> [Kho]",
+        "Xe_13": {
+            "mo_ta": "[Kho] -> Khach hang 22 -> Khach hang 08 -> Khach hang 48 -> Khach hang 23 -> Khach hang 29 -> Khach hang 40 -> Khach hang 46 -> Khach hang 42 -> Khach hang 11 -> Khach hang 36 -> Khach hang 35 -> [Kho]",
             "thu_tu": [
-                2,
                 21,
-                16,
-                40,
-                9,
-                29,
+                7,
+                47,
+                22,
+                28,
+                39,
+                45,
                 41,
-                25,
-                1,
+                10,
                 35,
-                43
+                34
             ]
         },
         "Xe_15": {
-            "mo_ta": "[Kho] -> Khach hang 09 -> Khach hang 48 -> Khach hang 29 -> Khach hang 14 -> Khach hang 27 -> Khach hang 46 -> Khach hang 04 -> [Kho]",
+            "mo_ta": "[Kho] -> Khach hang 19 -> Khach hang 39 -> Khach hang 50 -> Khach hang 14 -> Khach hang 25 -> Khach hang 49 -> Khach hang 04 -> Khach hang 02 -> Khach hang 16 -> Khach hang 44 -> Khach hang 47 -> Khach hang 24 -> [Kho]",
             "thu_tu": [
-                8,
-                47,
-                28,
+                18,
+                38,
+                49,
                 13,
-                26,
-                45,
-                3
+                24,
+                48,
+                3,
+                1,
+                15,
+                43,
+                46,
+                23
             ]
         },
         "Xe_16": {
-            "mo_ta": "[Kho] -> Khach hang 31 -> Khach hang 12 -> Khach hang 21 -> Khach hang 45 -> Khach hang 49 -> Khach hang 25 -> Khach hang 32 -> Khach hang 34 -> Khach hang 38 -> Khach hang 16 -> Khach hang 37 -> Khach hang 43 -> Khach hang 28 -> [Kho]",
+            "mo_ta": "[Kho] -> Khach hang 41 -> Khach hang 09 -> Khach hang 12 -> Khach hang 21 -> Khach hang 45 -> Khach hang 30 -> Khach hang 10 -> Khach hang 07 -> Khach hang 34 -> Khach hang 26 -> Khach hang 32 -> Khach hang 20 -> Khach hang 38 -> Khach hang 28 -> Khach hang 37 -> Khach hang 43 -> [Kho]",
             "thu_tu": [
-                30,
+                40,
+                8,
                 11,
                 20,
                 44,
-                48,
-                24,
-                31,
+                29,
+                9,
+                6,
                 33,
+                25,
+                31,
+                19,
                 37,
-                15,
+                27,
                 36,
-                42,
-                27
+                42
             ]
         }
     }

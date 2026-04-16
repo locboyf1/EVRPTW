@@ -18,7 +18,7 @@ def sinh_du_lieu_mau():
         co2_per_order = random.uniform(4.0, 6.0)
         usd_per_order = co2_per_order * 3.7 + random.uniform(-1, 1)
         data_points.append([
-            "2026-04-16 08:00:00", "Vinh", so_khach, 0.5, 0.5,
+            "2026-04-16 08:00:00", "Vinh, Viet Nam", so_khach, 0.5, 0.5,
             round(usd_per_order * so_khach, 2),
             round(co2_per_order * so_khach, 2),
             "Base Case"

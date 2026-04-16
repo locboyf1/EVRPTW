@@ -175,18 +175,16 @@ def tao_ma_tran_od_bang_dijkstra(
     GIAI ĐOẠN 1 (ArcGIS Clone): Dijkstra chạy MỘT LẦN DUY NHẤT để xây dựng
     2 Ma trận OD tĩnh N×N. Tabu Search sau đó chỉ tra cứu 2 mảng này.
 
-    LUỒNG XỬ LÝ:
+    LUỒNG XỬ LÝ (TỐI ƯU HIỆU NĂNG):
     ┌─────────────────────────────────────────────────────────┐
-    │  For i in range(N):                                     │
-    │    For j in range(N):                                   │
-    │      1. Dijkstra(node_i → node_j) → danh_sach_node     │
-    │      2. Tích lũy chiều dài (m) và thời gian (s)        │
-    │      3. Tính chi_phi = hao_mon + luong_tai_xe           │
-    │      4. Tính khi_thai_goc = quang_duong × he_so_MOVES  │
-    │  END Dijkstra (vòng lặp kết thúc hoàn toàn)            │
+    │  For i, node_nguon in enumerate(N):                     │
+    │    1. Single-Source Dijkstra(nguon_i → ALL)             │
+    │       -> Trả về từ điển paths_dict                      │
     │                                                         │
-    │  SAU ĐÓ (ngoài vòng lặp Dijkstra):                     │
-    │    ma_tran_khi_thai_xe = ma_tran_goc × he_so_xe        │
+    │    For j, node_dich in enumerate(N):                    │
+    │      2. Trích xuất đường đi từ paths_dict[node_dich]    │
+    │      3. Tính toán chi phí, khí thải (Logic bóc tách)    │
+    │  End Dijkstra (Tổng cộng N lần gọi thuật toán)         │
     └─────────────────────────────────────────────────────────┘
 
     Tham số:
@@ -220,24 +218,32 @@ def tao_ma_tran_od_bang_dijkstra(
     # VÒNG LẶP DÒ ĐƯỜNG DIJKSTRA
     # (Toàn bộ vòng lặp này PHẢI chạy xong trước khi nhân hệ số xe)
     # ═══════════════════════════════════════════════════════════
-    for i in range(so_diem):
-        for j in range(so_diem):
-            dem += 1
+    # ═══════════════════════════════════════════════════════════
+    # VÒNG LẶP DÒ ĐƯỜNG DIJKSTRA (Nguồn -> Nhiều Đích)
+    # Tối ưu: Chạy Dijkstra 1 lần cho mỗi nguồn thay vì N lần.
+    # ═══════════════════════════════════════════════════════════
+    for i, node_nguon in enumerate(danh_sach_node_osm):
+        # 1. Dijkstra Single-Source: Tìm toàn bộ đường đi từ node_nguon
+        try:
+            # lengths_dict: {node_dich: tong_thoi_gian}
+            # paths_dict:   {node_dich: [danh_sach_node_duong_di]}
+            _, paths_dict = nx.single_source_dijkstra(
+                do_thi, source=node_nguon, weight="travel_time"
+            )
+        except (nx.NodeNotFound, nx.NetworkXError):
+            continue
 
+        for j, node_dich in enumerate(danh_sach_node_osm):
+            dem += 1
             if i == j:
                 continue
 
-            node_nguon = danh_sach_node_osm[i]
-            node_dich  = danh_sach_node_osm[j]
-
             try:
-                # ── DIJKSTRA: Tìm đường ngắn nhất theo travel_time ──
-                duong_di_nodes = nx.shortest_path(
-                    do_thi,
-                    source=node_nguon,
-                    target=node_dich,
-                    weight="travel_time"
-                )
+                # 2. Trích xuất đường đi từ từ điển kết quả
+                if node_dich not in paths_dict:
+                    raise nx.NetworkXNoPath
+
+                duong_di_nodes = paths_dict[node_dich]
 
                 # ── Tích lũy chiều dài (m) và thời gian (s) qua từng cạnh ──
                 tong_chieu_dai_m = 0.0
@@ -248,18 +254,12 @@ def tao_ma_tran_od_bang_dijkstra(
                     node_tiep  = duong_di_nodes[k + 1]
                     du_lieu_canh_raw = do_thi[node_hien][node_tiep]
 
-                    # Phân biệt 2 loại đồ thị:
-                    # - MultiDiGraph (OSMnx): du_lieu_canh_raw = {0: {attrs}, 1: {attrs}, ...}
-                    #   → giá trị là dict thuộc tính → dùng .values() để lấy
-                    # - DiGraph (đồ thị dự phòng): du_lieu_canh_raw = {attrs} trực tiếp
-                    #   → giá trị là scalar (float/str) → dùng như dict thông thường
                     if isinstance(do_thi, nx.MultiDiGraph):
                         canh_tot_nhat = min(
                             du_lieu_canh_raw.values(),
                             key=lambda c: c.get("travel_time", float("inf"))
                         )
                     else:
-                        # DiGraph: lấy thuộc tính trực tiếp từ dict cạnh
                         canh_tot_nhat = du_lieu_canh_raw
 
                     tong_chieu_dai_m += canh_tot_nhat.get("length", 0)
@@ -275,21 +275,16 @@ def tao_ma_tran_od_bang_dijkstra(
                 else:
                     toc_do_tb_kmh = TOC_DO_MAC_DINH_KM_H
 
-                # Làm tròn tới bội số 10 gần nhất, kẹp trong [20, 120]
                 toc_do_tra_bang = max(20, min(120, round(toc_do_tb_kmh / 10) * 10))
                 he_so_khi_thai_moves = bang_moves.get(
                     toc_do_tra_bang, HANG_SO_KHI_THAI_MAC_DINH
                 )
 
-                # ── Tính chi phí (USD) ──
-                # = Hao mòn + Lương tài xế (lương là biến ĐỘC LẬP, không nhân hệ số xe)
+                # ── Tính chi phí & khí thải ──
                 chi_phi_hao_mon_usd = tong_chieu_dai_km * chi_phi_hao_mon_per_km
                 chi_phi_luong_usd   = tong_thoi_gian_gio * luong_tai_xe_usd_per_gio
                 tong_chi_phi_usd    = chi_phi_hao_mon_usd + chi_phi_luong_usd
-
-                # ── Tính khí thải gốc (gram CO2) ──
-                # CHƯA nhân hệ số loại xe — sẽ nhân NGOÀI vòng lặp này
-                khi_thai_goc_gram = tong_chieu_dai_km * he_so_khi_thai_moves
+                khi_thai_goc_gram   = tong_chieu_dai_km * he_so_khi_thai_moves
 
                 # ── Ghi vào ma trận ──
                 ma_tran_chi_phi[i][j]        = tong_chi_phi_usd
@@ -298,17 +293,15 @@ def tao_ma_tran_od_bang_dijkstra(
                 ma_tran_quang_duong_km[i][j]  = tong_chieu_dai_km
 
             except (nx.NetworkXNoPath, nx.NodeNotFound):
-                in_canh_bao(f"  [!] Không tìm được đường: {i}→{j}, gán ∞")
                 ma_tran_chi_phi[i][j]        = 1e9
                 ma_tran_khi_thai_goc[i][j]   = 1e9
                 ma_tran_thoi_gian_giay[i][j] = 1e9
                 ma_tran_quang_duong_km[i][j]  = 1e9
 
-            # Hiển thị tiến trình mỗi 10%
-            if dem % max(1, tong_cap // 10) == 0:
-                phan_tram = dem / tong_cap * 100
-                from giao_dien.terminal_ui import in_tien_trinh
-                in_tien_trinh(phan_tram, f"Dijkstra: {dem}/{tong_cap} cặp")
+        # Hiển thị tiến trình theo node nguồn (i)
+        phan_tram = (i + 1) / so_diem * 100
+        from giao_dien.terminal_ui import in_tien_trinh
+        in_tien_trinh(phan_tram, f"Dijkstra: Nguon {i+1}/{so_diem}")
 
     # Xuống dòng sau thanh tiến trình
     print()

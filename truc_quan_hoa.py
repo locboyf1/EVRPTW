@@ -38,17 +38,15 @@ def ve_do_thi_phan_tan_khoa_hoc():
         return
 
     # Chuẩn hóa về đơn vị "Per Order"
-    # X: kg of CO2 per Order
-    # Y: Dollars per order
     df['CO2_per_Order'] = df['Khi_Thai'] / df['So_Khach']
     df['USD_per_Order'] = df['Chi_Phi'] / df['So_Khach']
 
-    # Nếu không có cột Kich_Ban, gán mặc định là Base Case
     if 'Kich_Ban' not in df.columns:
         df['Kich_Ban'] = 'Base Case'
 
-    # 2. Cấu hình biểu đồ
-    plt.figure(figsize=(10, 7))
+    # 2. Khởi tạo Figure và Axes (Kích thước chuẩn 10x6)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
     styles = {
         'Base Case':   {'color': 'royalblue',   'marker': 'o', 'label': 'Base Case'},
         'Time Window': {'color': 'crimson',     'marker': 's', 'label': 'Time Window'},
@@ -57,55 +55,61 @@ def ve_do_thi_phan_tan_khoa_hoc():
 
     scenarios = df['Kich_Ban'].unique()
     
-    max_x = df['CO2_per_Order'].max() * 1.2 if not df.empty else 8.0
+    # Tính toán giới hạn trục X để vẽ đường xu hướng
+    max_x = df['CO2_per_Order'].max() * 1.1 if not df.empty else 8.0
     
-    for scen in scenarios:
+    for i, scen in enumerate(scenarios):
         if scen not in styles: continue
         
         sub_df = df[df['Kich_Ban'] == scen]
         x_data = sub_df['CO2_per_Order']
         y_data = sub_df['USD_per_Order']
         
-        # Vẽ các điểm phân tán
-        plt.scatter(x_data, y_data, 
+        # A. Vẽ các điểm phân tán (Scatter)
+        ax.scatter(x_data, y_data, 
                     color=styles[scen]['color'], 
                     marker=styles[scen]['marker'], 
                     alpha=0.7, s=60, edgecolors='k',
                     label=f"{scen}")
 
-        # Tính toán và vẽ đường xu hướng y = ax
+        # B. Tính toán và vẽ đường hồi quy y = ax
         a, r2 = tinh_hoi_quy_qua_goc_0(x_data, y_data)
-        
         x_trend = np.linspace(0, max_x, 100)
         y_trend = a * x_trend
         
-        plt.plot(x_trend, y_trend, 
+        ax.plot(x_trend, y_trend, 
                  color=styles[scen]['color'], 
                  linestyle='--', linewidth=1.5, alpha=0.8)
 
-        # Hiển thị phương trình và R2 lên biểu đồ
-        # Vị trí text lấy theo điểm cuối của đường xu hướng
-        plt.text(max_x * 0.7, a * max_x * 0.7 + random.uniform(-1, 1), 
-                 f"y = {a:.4f}x\nR² = {r2:.4f}", 
-                 color=styles[scen]['color'], fontsize=10, fontweight='bold')
+        # C. Định vị Text phương trình bằng hệ tọa độ tương đối (Axes Fraction)
+        # 0.95 là lề phải, y_pos giảm dần để không đè nhau
+        y_pos = 0.90 - (i * 0.12)
+        ax.text(0.95, y_pos, f"y = {a:.4f}x\nR² = {r2:.4f}", 
+                 transform=ax.transAxes, 
+                 verticalalignment='top', 
+                 horizontalalignment='right',
+                 color=styles[scen]['color'], 
+                 fontsize=10, fontweight='bold',
+                 bbox=dict(facecolor='white', alpha=0.6, edgecolor='none', boxstyle='round,pad=0.3'))
 
-    # 3. Định dạng trục và Trình bày
-    plt.xlabel("kg of CO2 per Order", fontsize=12, fontweight='bold')
-    plt.ylabel("Dollars per order", fontsize=12, fontweight='bold')
-    plt.title("Wygonik & Goodchild (2010): CO2 vs Cost Trade-offs", fontsize=14, pad=15)
+    # 3. Định dạng trục và Trình bày khoa học
+    ax.set_xlabel("kg of CO2 per Order", fontsize=11, fontweight='bold')
+    ax.set_ylabel("Dollars per Order", fontsize=11, fontweight='bold')
+    ax.set_title("Wygonik & Goodchild (2010): Urban VRP Trade-offs", fontsize=13, pad=15)
     
-    # Bắt đầu từ gốc tọa độ (0,0)
-    plt.xlim(0, max_x)
-    plt.ylim(0, max_x * 4.5) # Ước lượng dải Y dựa trên slope trung bình ~3.5
+    # Sử dụng Autoscale nhưng giữ gốc tọa độ (0,0)
+    ax.set_xlim(left=0)
+    ax.set_ylim(bottom=0)
     
-    plt.grid(True, linestyle=':', alpha=0.6)
-    plt.legend(loc='upper left', frameon=True, shadow=True)
+    ax.grid(True, linestyle=':', alpha=0.5)
+    ax.legend(loc='upper left', frameon=True, shadow=True)
     
+    # Chống vỡ layout
     plt.tight_layout()
     
     output_img = "city_vrp_arcgis/du_lieu/bieu_do_phan_tan.png"
     plt.savefig(output_img, dpi=300)
-    print(f"--- Hoan thanh! Bieu do da duoc luu tai: {output_img} ---")
+    print(f"--- Hoan thanh! Bieu do đa duoc luu tai: {output_img} ---")
     plt.show()
 
 import random # Cần cho vị trí text ngẫu nhiên tránh đè nhau
