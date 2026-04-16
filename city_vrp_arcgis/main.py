@@ -55,6 +55,7 @@ def chay_he_thong():
     
     kho = kh_json["kho_xuat_phat"]
     khach_hang = kh_json["danh_sach_khach_hang"]
+    tat_ca_diem = [kho] + khach_hang
     
     # Lay dung tu dien bang_moves
     bang_moves = kt_json["bang_moves"]
@@ -66,15 +67,18 @@ def chay_he_thong():
     # GIAI DOAN 2: MA TRAN OD (DIJKSTRA)
     # -------------------------------------------------------------------------
     print("\n[LOP 2] DANG TINH TOAN MA TRAN OD (OSMNX + DIJKSTRA)...")
-    G, dung_osm = tai_ban_do_osm(CAU_HINH["ten_thanh_pho"], CAU_HINH["ban_kinh_m"])
+    G, dung_osm = tai_ban_do_osm(CAU_HINH["ten_thanh_pho"], CAU_HINH["ban_kinh_m"], tat_ca_diem=tat_ca_diem)
     
-    tat_ca_diem = [kho] + khach_hang
-    nodes_id = snap_diem_vao_do_thi(G, tat_ca_diem)
+    nodes_id = snap_diem_vao_do_thi(G, tat_ca_diem, dung_osmnx=dung_osm)
     
     # Chạy Dijkstra
     ma_tran_cp, ma_tran_kt, ma_tran_tg, ma_tran_km = tao_ma_tran_od_bang_dijkstra(
         G, nodes_id, xe_mau, CAU_HINH["luong_tai_xe"], bang_moves
     )
+
+    # Quy doi don vi: Dijkstra tra ve Giay -> Quy doi sang Phut de khop voi Time Window
+    ma_tran_tg = ma_tran_tg / 60.0
+    in_thong_bao("  OK - Da quy doi ma tran thoi gian sang phut.")
 
     # Nhan he so Hybrid
     ma_tran_kt_final = ma_tran_kt * CAU_HINH["he_so_mo_phong_hybrid"]

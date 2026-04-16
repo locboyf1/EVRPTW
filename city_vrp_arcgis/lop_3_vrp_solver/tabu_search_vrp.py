@@ -162,12 +162,14 @@ class TabuSearchVRPSolver:
     def giai(self) -> Dict:
         in_tieu_de("LOP 3: TABU SEARCH (Refactored Modular)")
         
-        # 1. Khởi tạo đội xe 17 chiếc rỗng
+        # 1. Khởi tạo đội xe 17 chiếc
         solution = [[] for _ in range(self.so_xe)]
         kh_cho_giao = list(range(self.so_khach_hang))
-        random.shuffle(kh_cho_giao)
         
-        # Chia khách vào xe (Khởi tạo đơn giản)
+        # Heuristic: Sắp xếp khách hàng theo thời gian mở cửa để tăng tỷ lệ khả thi (Feasibility)
+        kh_cho_giao.sort(key=lambda x: self.khach_hang[x].get('thoi_gian_mo_cua', 0))
+        
+        # Chia khách vào xe (Khởi tạo tuần tự theo thời gian)
         for i, kh in enumerate(kh_cho_giao):
             solution[i % self.so_xe].append(kh)
             
