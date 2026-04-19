@@ -32,8 +32,8 @@ CAU_HINH = {
     "ten_thanh_pho": "Vinh, Nghe An, Vietnam",
     "ban_kinh_m":    6000,
     "so_xe":         17,
-    "tai_trong_max": 80,
-    "luong_tai_xe":  25.55,
+    "tai_trong_max": 90,
+    "luong_tai_xe":  26.55,
     "he_so_mo_phong_hybrid": 0.6,
     "vong_lap_tabu": 300,
     "ten_kich_ban":  "Density"
