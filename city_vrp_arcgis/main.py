@@ -104,7 +104,7 @@ def chay_he_thong():
     # TONG KET & LUU LICH SU
     # -------------------------------------------------------------------------
     # A. Luu file JSON chi tiet
-    output_json = os.path.join(_THU_MUC_GOC, "ket_qua_v6.json")
+    output_json = os.path.join(_THU_MUC_GOC, "ket_qua.json")
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(ket_qua, f, ensure_ascii=False, indent=4)
         

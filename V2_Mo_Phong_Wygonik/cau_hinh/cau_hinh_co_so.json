@@ -1,0 +1,52 @@
+{
+  "_ghi_chu": "File cau hinh tap trung cho toan bo he thong. Tat ca module deu doc tu day.",
+  "_ghi_chu_xe_base": "tai_trong_max = 90, luong_tai_xe = 26.55, ty_le_phat_thai_xe = 1.0",
+  "_ghi_chu_xe_hybrid": "tai_trong_max = 90, luong_tai_xe = 21.24, ty_le_phat_thai_xe = 0.6",
+  "_ghi_chu_xe_lon": "tai_trong_max = 150, luong_tai_xe = 26.55, ty_le_phat_thai_xe = 1.5",
+  "_ghi_chu_xe_nho": "tai_trong_max = 45, luong_tai_xe = 26.55, ty_le_phat_thai_xe = 0.5",
+  "ten_thanh_pho": "Vinh, Nghe An, Vietnam",
+  "ban_kinh_ban_do_m": 6000,
+  "so_khach_hang": 100,
+  "so_xe": 17,
+  "tai_trong_max": 90,
+  "gio_han_lam_viec_phut": 480,
+  "luong_tai_xe": 26.55,
+  "ty_le_phat_thai_xe": 0.6,
+  "_ghi_chu_ty_le": "1.0 = xe thuong, 0.6 = hybrid (giam 40%), 1.5 = xe lon, 0.5 = xe nho. Nhan vao khi thai GOC sau Dijkstra.",
+  "thoi_gian_boc_do_phut": 10,
+  "so_luong_service_windows": 3,
+  "_ghi_chu_service_windows": "Gia tri 1: Gop chung tat ca khach hang (Scenario 1). Gia tri 3: Chay doc lap 3 ca (Baseline).",
+  "danh_sach_ca_hoat_dong": {
+    "PreDawn": {
+      "bat_dau": "02:30",
+      "ket_thuc": "06:00"
+    },
+    "Breakfast": {
+      "bat_dau": "07:00",
+      "ket_thuc": "13:00"
+    },
+    "Lunch/Dinner": {
+      "bat_dau": "15:00",
+      "ket_thuc": "21:00"
+    }
+  },
+  "che_do_time_window": "mixed",
+  "do_rong_cua_so_phut": 60,
+  "kho_xuat_phat": {
+    "ten": "Kho trung tam Vinh",
+    "vi_do": 18.692384,
+    "kinh_do": 105.6843047
+  },
+  "tham_so_tabu": {
+    "toi_da_vong_lap": 1000,
+    "do_dai_tabu": 15,
+    "trong_so_chi_phi": 0.5,
+    "trong_so_khi_thai": 0.5
+  },
+  "_ghi_chu_time_window": "mixed = random do rong cho tung KH (kich ban [a] Weighted Average). fixed = ep do rong bang do_rong_cua_so_phut cho tat ca KH.",
+  "tham_so_xe": {
+    "chi_phi_hao_mon_usd_per_km": 0.15,
+    "toc_do_mac_dinh_km_h": 50,
+    "he_so_khi_thai_mac_dinh_g_per_km": 0.261
+  }
+}

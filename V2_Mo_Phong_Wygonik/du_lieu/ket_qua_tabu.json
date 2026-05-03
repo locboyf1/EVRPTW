@@ -1,0 +1,193 @@
+{
+    "PreDawn": {
+        "ham_muc_tieu": 175.5741450103704,
+        "tong_chi_phi": 325.53138798025077,
+        "tong_khi_thai": 25.616902040490004,
+        "chi_phi_per_order": 6.6434977138826685,
+        "khi_thai_per_order": 0.5227939191936736,
+        "so_xe_dung": 5,
+        "thoi_gian_boc_do_phut": 10,
+        "so_khach_hang_trong_tap": 49,
+        "lo_trinh": {
+            "Xe_01": {
+                "mo_ta": "[Kho] -> Khach hang 30 -> Khach hang 26 -> Khach hang 22 -> Khach hang 38 -> Khach hang 11 -> Khach hang 18 -> Khach hang 03 -> Khach hang 17 -> Khach hang 35 -> [Kho]",
+                "thu_tu": [
+                    29,
+                    25,
+                    21,
+                    37,
+                    10,
+                    17,
+                    2,
+                    16,
+                    34
+                ]
+            },
+            "Xe_02": {
+                "mo_ta": "[Kho] -> Khach hang 49 -> Khach hang 40 -> Khach hang 36 -> Khach hang 19 -> Khach hang 31 -> Khach hang 05 -> Khach hang 45 -> Khach hang 08 -> [Kho]",
+                "thu_tu": [
+                    48,
+                    39,
+                    35,
+                    18,
+                    30,
+                    4,
+                    44,
+                    7
+                ]
+            },
+            "Xe_04": {
+                "mo_ta": "[Kho] -> Khach hang 09 -> Khach hang 14 -> Khach hang 27 -> Khach hang 48 -> Khach hang 06 -> Khach hang 21 -> Khach hang 04 -> Khach hang 37 -> Khach hang 43 -> Khach hang 23 -> [Kho]",
+                "thu_tu": [
+                    8,
+                    13,
+                    26,
+                    47,
+                    5,
+                    20,
+                    3,
+                    36,
+                    42,
+                    22
+                ]
+            },
+            "Xe_11": {
+                "mo_ta": "[Kho] -> Khach hang 41 -> Khach hang 32 -> Khach hang 28 -> Khach hang 25 -> Khach hang 47 -> Khach hang 20 -> Khach hang 13 -> Khach hang 42 -> Khach hang 02 -> Khach hang 01 -> Khach hang 12 -> Khach hang 10 -> [Kho]",
+                "thu_tu": [
+                    40,
+                    31,
+                    27,
+                    24,
+                    46,
+                    19,
+                    12,
+                    41,
+                    1,
+                    0,
+                    11,
+                    9
+                ]
+            },
+            "Xe_15": {
+                "mo_ta": "[Kho] -> Khach hang 24 -> Khach hang 46 -> Khach hang 39 -> Khach hang 33 -> Khach hang 44 -> Khach hang 16 -> Khach hang 15 -> Khach hang 07 -> Khach hang 29 -> Khach hang 34 -> [Kho]",
+                "thu_tu": [
+                    23,
+                    45,
+                    38,
+                    32,
+                    43,
+                    15,
+                    14,
+                    6,
+                    28,
+                    33
+                ]
+            }
+        }
+    },
+    "Breakfast": {
+        "ham_muc_tieu": 165.06932424327195,
+        "tong_chi_phi": 306.6259361614775,
+        "tong_khi_thai": 23.51271232506638,
+        "chi_phi_per_order": 12.776080673394896,
+        "khi_thai_per_order": 0.9796963468777659,
+        "so_xe_dung": 3,
+        "thoi_gian_boc_do_phut": 10,
+        "so_khach_hang_trong_tap": 24,
+        "lo_trinh": {
+            "Xe_02": {
+                "mo_ta": "[Kho] -> Khach hang 73 -> Khach hang 55 -> Khach hang 56 -> Khach hang 60 -> Khach hang 65 -> Khach hang 57 -> Khach hang 64 -> Khach hang 67 -> [Kho]",
+                "thu_tu": [
+                    72,
+                    54,
+                    55,
+                    59,
+                    64,
+                    56,
+                    63,
+                    66
+                ]
+            },
+            "Xe_06": {
+                "mo_ta": "[Kho] -> Khach hang 52 -> Khach hang 66 -> Khach hang 50 -> Khach hang 53 -> Khach hang 59 -> Khach hang 63 -> Khach hang 70 -> Khach hang 58 -> Khach hang 69 -> Khach hang 61 -> Khach hang 72 -> Khach hang 71 -> [Kho]",
+                "thu_tu": [
+                    51,
+                    65,
+                    49,
+                    52,
+                    58,
+                    62,
+                    69,
+                    57,
+                    68,
+                    60,
+                    71,
+                    70
+                ]
+            },
+            "Xe_07": {
+                "mo_ta": "[Kho] -> Khach hang 51 -> Khach hang 62 -> Khach hang 68 -> Khach hang 54 -> [Kho]",
+                "thu_tu": [
+                    50,
+                    61,
+                    67,
+                    53
+                ]
+            }
+        }
+    },
+    "Lunch/Dinner": {
+        "ham_muc_tieu": 162.23437319840278,
+        "tong_chi_phi": 299.89919393885054,
+        "tong_khi_thai": 24.569552457955005,
+        "chi_phi_per_order": 11.10737755329076,
+        "khi_thai_per_order": 0.9099834243687039,
+        "so_xe_dung": 3,
+        "thoi_gian_boc_do_phut": 10,
+        "so_khach_hang_trong_tap": 27,
+        "lo_trinh": {
+            "Xe_04": {
+                "mo_ta": "[Kho] -> Khach hang 79 -> Khach hang 96 -> Khach hang 83 -> Khach hang 98 -> [Kho]",
+                "thu_tu": [
+                    78,
+                    95,
+                    82,
+                    97
+                ]
+            },
+            "Xe_06": {
+                "mo_ta": "[Kho] -> Khach hang 86 -> Khach hang 93 -> Khach hang 99 -> Khach hang 88 -> Khach hang 80 -> Khach hang 89 -> Khach hang 94 -> Khach hang 77 -> Khach hang 81 -> [Kho]",
+                "thu_tu": [
+                    85,
+                    92,
+                    98,
+                    87,
+                    79,
+                    88,
+                    93,
+                    76,
+                    80
+                ]
+            },
+            "Xe_10": {
+                "mo_ta": "[Kho] -> Khach hang 100 -> Khach hang 87 -> Khach hang 97 -> Khach hang 84 -> Khach hang 90 -> Khach hang 91 -> Khach hang 75 -> Khach hang 82 -> Khach hang 92 -> Khach hang 78 -> Khach hang 95 -> Khach hang 76 -> Khach hang 85 -> Khach hang 74 -> [Kho]",
+                "thu_tu": [
+                    99,
+                    86,
+                    96,
+                    83,
+                    89,
+                    90,
+                    74,
+                    81,
+                    91,
+                    77,
+                    94,
+                    75,
+                    84,
+                    73
+                ]
+            }
+        }
+    }
+}

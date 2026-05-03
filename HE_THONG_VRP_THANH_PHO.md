@@ -1,7 +1,7 @@
 # 🗺️ Hệ Thống City VRP Đa Mục Tiêu — Bản Sao ArcGIS Network Analyst
 
 > **Mục tiêu**: Tái hiện chính xác phương pháp luận của bài báo khoa học dùng ArcGIS VRP Solver.  
-> **Kiến trúc**: 3 lớp tách biệt — Tiền xử lý → Dijkstra (Network Analyst) → Tabu Search (VRP Solver)  
+> **Kiến trúc**: Pipeline / Modular Scripts — 4 bước thực thi độc lập, dữ liệu trung gian Serialize qua file  
 > **Nguyên tắc cốt lõi**: Tabu Search **TUYỆT ĐỐI** chỉ đọc từ Ma trận OD tĩnh, không bao giờ gọi đồ thị
 
 ---
@@ -11,24 +11,54 @@
 ```
 city_vrp_arcgis/
 │
-├── du_lieu/                          # Lớp 1: Dữ liệu đầu vào
-│   ├── du_lieu_khi_thai.json         # Bảng MOVES: tốc độ → hệ số xả thải
-│   ├── cau_hinh_xe.json              # Cấu hình đội xe (hao mòn, khí thải, lương)
-│   └── khach_hang.json               # Danh sách khách hàng + time windows
+├── du_lieu/                            # Dữ liệu đầu vào (JSON gốc)
+│   ├── du_lieu_khi_thai.json           # Bảng MOVES: tốc độ → hệ số xả thải
+│   ├── cau_hinh_xe.json                # Cấu hình đội xe (hao mòn, khí thải, lương)
+│   ├── khach_hang.json                 # Danh sách khách hàng + time windows
+│   └── cache/                          # Dữ liệu trung gian (Serialize)
+│       ├── do_thi_osm.pkl              # Đồ thị OSMnx + node IDs (Output bước 1)
+│       └── ma_tran_od.npz              # 4 ma trận numpy N×N (Output bước 2)
 │
-├── lop_1_tien_xu_ly/
-│   └── tao_du_lieu.py                # Script sinh JSON tĩnh
+├── ket_qua/                            # Kết quả chạy & báo cáo khoa học
+│   ├── tabu_ket_qua.json              # Lộ trình chi tiết từng xe
+│   ├── lich_su_so_sanh.csv            # Log kịch bản (phục vụ Table 2, 3)
+│   ├── figure_2_routes.png            # Bản đồ lộ trình
+│   └── figure_3_tradeoff.png          # Biểu đồ Pareto
 │
-├── lop_2_network_analyst/
-│   └── dijkstra_ma_tran_od.py        # Tải đồ thị OSMnx + chạy Dijkstra → 2 ma trận
+├── modules/                            # Logic cốt lõi (Reusable)
+│   ├── __init__.py
+│   ├── dijkstra_logic.py              # Công cụ Network Analyst (OSMnx + Dijkstra)
+│   └── tabu_search_vrp.py             # Class TabuSearchVRPSolver
 │
-├── lop_3_vrp_solver/
-│   └── tabu_search_vrp.py            # Class TabuSearchVRPSolver (tự xây, không OR-Tools)
+├── giao_dien/                          # Giao diện terminal
+│   └── terminal_ui.py                 # Minimalist Blue Pastel Theme
 │
-├── giao_dien/
-│   └── terminal_ui.py                # Giao diện terminal minimalist màu xanh pastel
-│
-└── main.py                           # Điểm khởi động — điều phối 3 lớp theo thứ tự
+├── 1_tai_ban_do.py                    # Phase 1: Tải đồ thị → lưu .pkl
+├── 1b_sinh_khach_hang.py              # Phase 1b: Sinh KH ngẫu nhiên trong vùng bản đồ
+├── 2_tao_ma_tran_od.py                # Phase 2: Snap node + Dijkstra → lưu .npz
+├── 3_giai_tabu_search.py              # Phase 3: Tabu Search → lưu .json + .csv
+├── 3_giai_kien_aco.py                 # Phase 3: Ant Colony (Placeholder)
+├── 4_tao_table_2_3.py                 # Phase 4: Xuất bảng so sánh (Pandas)
+└── 4_ve_figure_2_3.py                 # Phase 4: Vẽ biểu đồ (Matplotlib)
+```
+
+### 🔄 Luồng Pipeline
+
+```
+1_tai_ban_do.py ──→ do_thi_osm.pkl
+         │
+         └──→ 1b_sinh_khach_hang.py ──→ khach_hang.json
+                       │
+                       └──→ 2_tao_ma_tran_od.py ──→ snap node + Dijkstra ──→ ma_tran_od.npz
+                                                                                     │
+                   ┌─────────────────────────────────────────────────────────────────┘
+                   │
+                   ├──→ 3_giai_tabu_search.py ──→ tabu_ket_qua.json + lich_su_so_sanh.csv
+                   └──→ 3_giai_kien_aco.py    ──→ aco_ket_qua.json  + lich_su_so_sanh.csv
+                                                                                     │
+                   ┌─────────────────────────────────────────────────────────────────┘
+                   ├──→ 4_tao_table_2_3.py    ──→ Table 2 & 3 (Terminal / Excel)
+                   └──→ 4_ve_figure_2_3.py    ──→ Figure 2 & 3 (PNG)
 ```
 
 ---
