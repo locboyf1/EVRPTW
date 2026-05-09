@@ -5,7 +5,7 @@ LOI GIAI MANG LUOI: DIJKSTRA — TAO MA TRAN OD (FULL CODE)
 LUONG DU LIEU:
     do_thi_osm.pkl  (graph da tai tu buoc 1_tai_ban_do.py)
     khach_hang.json  (danh sach KH da sinh tu 1b_sinh_khach_hang.py)
-    cau_hinh_co_so.json (luong_tai_xe, ty_le_phat_thai_xe)
+    cau_hinh_co_so.json (danh_sach_xe -> profile xe)
          |
          v
     [SCRIPT NAY]
@@ -18,8 +18,9 @@ LUONG DU LIEU:
 
 NGUYEN TAC:
     - Chi phi = hao_mon_xe ($/km) + luong_tai_xe ($/gio * gio)
-    - Khi thai goc = quang_duong (km) * he_so_MOVES (g/km)
-    - SAU vong lap: khi_thai_final = khi_thai_goc * he_so_hybrid
+    - Khi thai goc = TONG (chieu_dai_canh_km * he_so_MOVES_cua_canh)
+      (Phuong phap vi phan chieu dai — tinh tung canh rieng)
+    - SAU vong lap: khi_thai_final = khi_thai_goc * ty_le_phat_thai_xe
     - Ket qua luu vao .npz de loi_giai_lo_trinh/ load doc lap
 =============================================================
 """
@@ -101,38 +102,6 @@ def snap_diem_vao_do_thi(G, tat_ca_diem: list) -> list:
 
 
 # ─────────────────────────────────────────────────────────────
-# HAM: TINH TOC DO TRUNG BINH CUA MOT DUONG DI
-# ─────────────────────────────────────────────────────────────
-def _lay_toc_do_tb_duong_di(G, danh_sach_node: list) -> float:
-    """
-    Tinh toc do trung binh co trong so (theo km) cua duong di.
-    Dung de tra bang MOVES: toc do → he so khi thai.
-    """
-    tong_dai = 0.0
-    tong_dai_x_speed = 0.0
-
-    for k in range(len(danh_sach_node) - 1):
-        u = danh_sach_node[k]
-        v = danh_sach_node[k + 1]
-
-        # Lay canh tot nhat (travel_time nho nhat neu co song song)
-        canh = min(
-            G[u][v].values(),
-            key=lambda c: c.get("travel_time", float("inf"))
-        )
-        dai = canh.get("length", 0)         # met
-        speed = canh.get("speed_kph", TOC_DO_MAC_DINH_KM_H)
-
-        tong_dai += dai
-        tong_dai_x_speed += dai * speed
-
-    if tong_dai == 0:
-        return TOC_DO_MAC_DINH_KM_H
-
-    return tong_dai_x_speed / tong_dai
-
-
-# ─────────────────────────────────────────────────────────────
 # HAM CHINH: TAO MA TRAN OD BANG DIJKSTRA
 # ─────────────────────────────────────────────────────────────
 def tao_ma_tran_od(G, danh_sach_node: list,
@@ -146,9 +115,12 @@ def tao_ma_tran_od(G, danh_sach_node: list,
     │    Dijkstra tu node_i → tat ca node khac (1 lan)        │
     │    For j in range(N):                                   │
     │      1. Lay duong di shortest path (theo travel_time)   │
-    │      2. Tich luy chieu dai (m) va thoi gian (s)         │
+    │      2. Voi MOI CANH trong duong di:                    │
+    │         a. Lay speed cua canh → lam tron boi 10         │
+    │         b. Tra BANG_MOVES → he so xa thai rieng canh    │
+    │         c. kt_canh = (length/1000) * he_so_moves       │
+    │         d. Cong don vao tong_kt_goc                     │
     │      3. Tinh chi_phi = hao_mon + luong_tai_xe           │
-    │      4. Tinh khi_thai_goc = quang_duong × he_so_MOVES  │
     │  END                                                    │
     └─────────────────────────────────────────────────────────┘
 
@@ -219,9 +191,10 @@ def tao_ma_tran_od(G, danh_sach_node: list,
 
             duong_di = paths[node_dich]
 
-            # ── Tich luy chieu dai (m) va thoi gian (s) ──
+            # ── Tich luy tung canh: chieu dai, thoi gian, khi thai ──
             tong_dai_m = 0.0
             tong_tg_s = 0.0
+            tong_kt_goc = 0.0
 
             for k in range(len(duong_di) - 1):
                 u = duong_di[k]
@@ -230,32 +203,31 @@ def tao_ma_tran_od(G, danh_sach_node: list,
                     G[u][v].values(),
                     key=lambda c: c.get("travel_time", float("inf"))
                 )
-                tong_dai_m += canh.get("length", 0)
-                tong_tg_s += canh.get("travel_time", 0)
+                dai_canh_m = canh.get("length", 0)
+                tg_canh_s = canh.get("travel_time", 0)
+                speed = canh.get("speed_kph", TOC_DO_MAC_DINH_KM_H)
+
+                tong_dai_m += dai_canh_m
+                tong_tg_s += tg_canh_s
+
+                # ── Vi phan chieu dai: tra MOVES cho RIENG canh nay ──
+                toc_do_tra = max(20, min(120, (int(speed) // 10) * 10))
+                he_so_moves = BANG_MOVES.get(toc_do_tra, HE_SO_KHI_THAI_MAC_DINH)
+                kt_canh = (dai_canh_m / 1000.0) * he_so_moves
+                tong_kt_goc += kt_canh
 
             # Chuyen doi don vi
             tong_dai_km = tong_dai_m / 1000.0
             tong_tg_gio = tong_tg_s / 3600.0
-
-            # ── Toc do trung binh de tra bang MOVES ──
-            toc_do_tb = (tong_dai_km / tong_tg_gio
-                         if tong_tg_gio > 0 else TOC_DO_MAC_DINH_KM_H)
-
-            # Lam tron xuong boi so 10 gan nhat de tra bang
-            toc_do_tra = max(20, min(120, round(toc_do_tb / 10) * 10))
-            he_so_moves = BANG_MOVES.get(toc_do_tra, HE_SO_KHI_THAI_MAC_DINH)
 
             # ── Chi phi = hao mon + luong tai xe ──
             cp_hao_mon = tong_dai_km * CHI_PHI_HAO_MON_USD_PER_KM
             cp_luong = tong_tg_gio * luong_tai_xe_usd_per_gio
             tong_cp = cp_hao_mon + cp_luong
 
-            # ── Khi thai goc (CHUA nhan he so loai xe) ──
-            khi_thai_goc = tong_dai_km * he_so_moves  # gram CO2
-
             # ── Ghi vao ma tran ──
             ma_tran_cp[i][j] = tong_cp
-            ma_tran_kt[i][j] = khi_thai_goc
+            ma_tran_kt[i][j] = tong_kt_goc
             ma_tran_tg[i][j] = tong_tg_s
             ma_tran_km[i][j] = tong_dai_km
 
@@ -279,7 +251,7 @@ def main():
     3. Load khach hang (.json)
     4. Snap diem vao do thi
     5. Chay Dijkstra → 4 ma tran goc
-    6. Nhan he so Hybrid vao khi thai
+    6. Nhan he so loai xe vao khi thai
     7. Luu Ma_Tran_OD.npz
     """
     in_tieu_de("LOI GIAI MANG LUOI: DIJKSTRA -> MA TRAN OD")
@@ -291,8 +263,14 @@ def main():
     with open(FILE_CAU_HINH, "r", encoding="utf-8") as f:
         cau_hinh = json.load(f)
 
-    luong_tai_xe = cau_hinh["luong_tai_xe"]
-    he_so_hybrid = cau_hinh["ty_le_phat_thai_xe"]
+    # Lay thong so xe tu profile duoc chon
+    loai_xe = cau_hinh["loai_xe_su_dung"]
+    profile_xe = cau_hinh["danh_sach_xe"][loai_xe]
+    luong_tai_xe = profile_xe["luong"]
+    he_so_loai_xe = profile_xe["ty_le_phat_thai"]
+
+    in_thong_bao(f"Loai xe: {loai_xe} | Luong: {luong_tai_xe} | "
+                 f"Ty le phat thai: x{he_so_loai_xe}")
 
     # ── 2. Load do thi tu cache ──
     if not os.path.exists(FILE_DO_THI_CACHE):
@@ -325,19 +303,19 @@ def main():
     # ── 5. Chay Dijkstra → 4 ma tran goc ──
     cp, kt_goc, tg, km = tao_ma_tran_od(G, danh_sach_node, luong_tai_xe)
 
-    # ── 6. Nhan he so Hybrid SAU KHI Dijkstra xong ──
+    # ── 6. Nhan he so loai xe SAU KHI Dijkstra xong ──
     # Day la diem mau chot kien truc: do thi khong biet xe nao dang di
     # Chi sau khi xuat ma tran, moi ap dung dac tinh xe
-    kt_final = kt_goc * he_so_hybrid
-    in_thong_bao(f"Da ap dung he so Hybrid: x{he_so_hybrid} "
-                 f"(Khi thai giam {(1 - he_so_hybrid) * 100:.0f}%)")
+    kt_final = kt_goc * he_so_loai_xe
+    in_thong_bao(f"Da ap dung he so loai xe [{loai_xe}]: x{he_so_loai_xe} "
+                 f"(Khi thai thay doi {(he_so_loai_xe - 1) * 100:+.0f}%)")
 
     # ── 7. Luu Ma_Tran_OD.npz ──
     os.makedirs(os.path.dirname(FILE_OUTPUT_NPZ), exist_ok=True)
     np.savez(FILE_OUTPUT_NPZ, cp=cp, kt=kt_final, tg=tg, km=km)
     in_ket_qua(f"Da luu 4 ma tran OD -> {FILE_OUTPUT_NPZ}")
     in_thong_bao(f"  cp: chi phi USD     ({cp.shape})")
-    in_thong_bao(f"  kt: khi thai gram   ({kt_final.shape}) — da nhan Hybrid")
+    in_thong_bao(f"  kt: khi thai gram   ({kt_final.shape}) — da nhan {loai_xe}")
     in_thong_bao(f"  tg: thoi gian giay  ({tg.shape})")
     in_thong_bao(f"  km: quang duong km  ({km.shape})")
 

@@ -274,7 +274,7 @@ CSV_HEADER = [
     "Chi_Phi_Tong", "Khi_Thai_Tong", "Chi_Phi_Per_Order", "Khi_Thai_Per_Order"
 ]
 
-def _ghi_csv(lan_chay_id, cau_hinh, ten_ca_label, so_kh, ket_qua):
+def _ghi_csv(lan_chay_id, cau_hinh, profile_xe, ten_ca_label, so_kh, ket_qua):
     """Ghi 1 dong vao lich_su_so_sanh.csv (14 cot)."""
     file_ton_tai = os.path.isfile(FILE_CSV)
     with open(FILE_CSV, "a", newline="", encoding="utf-8") as f:
@@ -284,12 +284,12 @@ def _ghi_csv(lan_chay_id, cau_hinh, ten_ca_label, so_kh, ket_qua):
         w.writerow([
             lan_chay_id,
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            cau_hinh.get("ten_kich_ban", "Default"),
+            cau_hinh["ten_kich_ban"],
             ten_ca_label,
             cau_hinh["che_do_time_window"],
             cau_hinh["do_rong_cua_so_phut"],
             so_kh,
-            cau_hinh["tai_trong_max"],
+            profile_xe["tai_trong"],
             cau_hinh["thoi_gian_boc_do_phut"],
             ket_qua["so_xe_dung"],
             round(ket_qua["tong_chi_phi"], 2),
@@ -316,7 +316,12 @@ def main():
     ds_ca = cau_hinh["danh_sach_ca_hoat_dong"]
     tham_so = cau_hinh["tham_so_tabu"]
 
+    # Lay thong so xe tu profile duoc chon
+    loai_xe = cau_hinh["loai_xe_su_dung"]
+    profile_xe = cau_hinh["danh_sach_xe"][loai_xe]
+
     in_thong_bao(f"Lan chay: {lan_chay_id}")
+    in_thong_bao(f"Kich ban: {cau_hinh['ten_kich_ban']} | Loai xe: {loai_xe}")
     in_thong_bao(f"Service Windows = {so_sw} ({'Scenario 1 — Gop ca' if so_sw == 1 else 'Baseline — 3 ca'})")
 
     # 2. Load ma tran OD
@@ -360,9 +365,9 @@ def main():
     def _tao_solver():
         return TabuSearchVRPSolver(
             so_xe=cau_hinh["so_xe"],
-            tai_trong_toi_da=cau_hinh["tai_trong_max"],
+            tai_trong_toi_da=profile_xe["tai_trong"],
             gio_han_lam_viec_phut=cau_hinh["gio_han_lam_viec_phut"],
-            luong_tai_xe=cau_hinh["luong_tai_xe"],
+            luong_tai_xe=profile_xe["luong"],
             danh_sach_khach_hang=khach_hang,
             ma_tran_chi_phi=matrices['cp'],
             ma_tran_khi_thai=matrices['kt'],
@@ -391,7 +396,7 @@ def main():
         in_ket_qua(f"Da luu JSON: {FILE_KET_QUA}")
 
         # Ghi CSV
-        _ghi_csv(lan_chay_id, cau_hinh, "All_Merged", len(tap_idx), ket_qua)
+        _ghi_csv(lan_chay_id, cau_hinh, profile_xe, "All_Merged", len(tap_idx), ket_qua)
         in_ket_qua(f"Da ghi CSV: {FILE_CSV}")
 
     elif so_sw == 3:
@@ -416,7 +421,7 @@ def main():
             ket_qua_tong[ten_ca] = kq
 
             # Ghi CSV cho ca nay (chung lan_chay_id)
-            _ghi_csv(lan_chay_id, cau_hinh, ten_ca, len(tap_idx), kq)
+            _ghi_csv(lan_chay_id, cau_hinh, profile_xe, ten_ca, len(tap_idx), kq)
             in_ket_qua(f"Da ghi CSV cho ca {ten_ca}")
 
         # Luu JSON tong (3 key, khong ghi de nhau)
